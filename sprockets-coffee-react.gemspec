@@ -3,10 +3,10 @@ $:.push File.expand_path("../lib", __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "sprockets-coffee-react"
-  s.version     = "0.2.0"
+  s.version     = "0.2.1"
   s.author      = "James Friend"
   s.email       = "james@jsdf.co"
-  s.homepage    = "http://jsdf.co"
+  s.homepage    = "https://github.com/jsdf/sprockets-coffee-react"
   s.summary     = "Coffeescript with React JSX (CJSX) via Sprockets"
   s.description = "Preprocessor for Coffeescript with React JSX (CJSX). This gem makes it easy to integrate this into the Rails asset pipeline or other Sprockets chains."
   s.license     = "MIT"

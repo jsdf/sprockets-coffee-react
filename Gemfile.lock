@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    sprockets-coffee-react (0.3.0)
-      coffee-react (~> 0)
+    sprockets-coffee-react (0.2.0)
+      coffee-react (~> 0.2)
       sprockets (~> 2.1)
 
 GEM

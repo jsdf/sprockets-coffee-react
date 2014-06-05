@@ -6,7 +6,7 @@ Add this to your Gemfile:
 
   gem 'sprockets-coffee-react'
 
-Place a `.js.coffee.cjsx` or a `.js.coffee` file with a `@cjsx` pragma in your assets directory.
+Place a <tt>.js.coffee.cjsx</tt> or a <tt>.js.coffee</tt> file with a <tt>@cjsx</tt> pragma in your assets directory.
 
 Require within your <tt>application.js</tt> or somewhere else:
 
