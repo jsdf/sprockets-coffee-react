@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    sprockets-coffee-react (0.2.0)
-      coffee-react (~> 0.2)
+    sprockets-coffee-react (0.3.1)
+      coffee-react (~> 0.3, >= 0.3.1)
       sprockets (~> 2.1)
 
 GEM
@@ -40,7 +40,7 @@ GEM
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
-    coffee-react (0.2.0)
+    coffee-react (0.3.1)
       execjs
     coffee-script (2.2.0)
       coffee-script-source
@@ -102,7 +102,6 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails
-  coffee-react (~> 0.2.0)
   rails (= 3.2.12)
   sprockets-coffee-react!
   sqlite3

@@ -10,9 +10,8 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# To use debugger
-# gem 'debugger'
-gem 'rails', '3.2.12'
-gem 'coffee-rails'
-gem 'coffee-react', '~> 0.2.0'
-gem 'sqlite3'
+group :test, :development do
+  gem 'rails', '3.2.12'
+  gem 'coffee-rails'
+  gem 'sqlite3'
+end 
