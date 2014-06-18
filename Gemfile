@@ -14,4 +14,5 @@ group :test, :development do
   gem 'rails', '3.2.12'
   gem 'coffee-rails'
   gem 'sqlite3'
+  gem 'therubyracer'
 end 
