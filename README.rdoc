@@ -6,16 +6,16 @@ Add this to your Gemfile:
 
   gem 'sprockets-coffee-react'
 
-Place a <tt>.js.coffee.cjsx</tt> or a <tt>.js.coffee</tt> file with a <tt>@cjsx</tt> pragma in your assets directory.
+Place a <tt>.js.coffee.cjsx</tt> or a <tt>.js.coffee</tt> file with a 
+<tt>@cjsx</tt> pragma in your assets directory.
 
-Require within your <tt>application.js</tt> or somewhere else:
+Eg. if you have a file called <tt>my-component.js.coffee</tt> which contains 
+some CJSX code, require it from <tt>application.js</tt> or somewhere else:
 
-  //
   //= require my-component
-  //
 
-Done.
-
+It it will be automatically transformed to Coffeescript, then compiled to 
+Javascript.
 
 == License
 
