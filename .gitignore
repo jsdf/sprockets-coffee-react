@@ -52,3 +52,6 @@ test/dummy/.sass-cache
 
 # built files
 *.gem
+
+
+Gemfile.lock

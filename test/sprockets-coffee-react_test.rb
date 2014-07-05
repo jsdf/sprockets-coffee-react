@@ -5,20 +5,36 @@ class SprocketsCoffeeReactTest < ActionDispatch::IntegrationTest
     assert_kind_of Module, Sprockets::CoffeeReact
   end
 
-  test "coffee preprocessed" do
-    get "/assets/car.js.coffee"
-    assert_equal File.open(example_file_path '/car.js').read, @response.body.to_s
+  test ".js.coffee with pragma" do
+    get "/assets/car1.js"
+    assert_equal expected_output_file.read, @response.body.to_s
     assert_response :success
   end
 
-  test "coffee cjsx preprocessed" do
-    get "/assets/car2.js.coffee.cjsx"
-    assert_equal File.open(example_file_path '/car.js').read, @response.body.to_s
+  test ".js.coffee.cjsx without pragma" do
+    get "/assets/car2.js"
+    assert_equal expected_output_file.read, @response.body.to_s
+    assert_response :success
+  end
+
+  test ".js.cjsx without pragma" do
+    get "/assets/car3.js"
+    assert_equal expected_output_file.read, @response.body.to_s
+    assert_response :success
+  end
+
+  test ".js" do
+    get "/assets/car.js"
+    assert_equal expected_output_file.read, @response.body.to_s
     assert_response :success
   end
 
   def example_dir
     File.dirname __FILE__
+  end
+
+  def expected_output_file
+    File.open(example_file_path '/car.js')
   end
 
   def example_file_path(filename)
