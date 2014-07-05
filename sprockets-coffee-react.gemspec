@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "sprockets-coffee-react"
-  s.version     = "0.4.1"
+  s.version     = "0.4.2"
   s.author      = "James Friend"
   s.email       = "james@jsdf.co"
   s.homepage    = "https://github.com/jsdf/sprockets-coffee-react"
