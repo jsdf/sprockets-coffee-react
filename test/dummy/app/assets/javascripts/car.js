@@ -1,22 +1,22 @@
 (function() {
-  var Car, React;
-
-  React = require('react');
+  var Car;
 
   Car = React.createClass({
     render: function() {
       var _ref;
-      return Car({
+      return React.DOM.div({
         "doors": 4.,
-        "safety": getSafetyRating() * 2,
+        "date": Date.now() * 2,
         "data-top-down": "yep",
         "checked": true
-      }, FrontSeat(null), BackSeat(null), React.DOM.p(null, "Which seat can I take? ", ((_ref = this.props) != null ? _ref.seat : void 0) || 'none'));
+      }, "Car", React.DOM.hr(null), React.DOM.hr(null), React.DOM.p(null, ((_ref = this.props) != null ? _ref.color : void 0) || 'none'));
     }
   });
 
-  React.renderComponent(Car({
-    "seat": "front, obvs"
-  }), document.getElementById('container'));
+  $(function() {
+    return React.renderComponent(Car({
+      "color": "red"
+    }), $('<div />').appendTo($('body')).get(0));
+  });
 
 }).call(this);

@@ -34,7 +34,7 @@ class SprocketsCoffeeReactTest < ActionDispatch::IntegrationTest
   end
 
   def expected_output_file
-    File.open(example_file_path '/car.js')
+    File.open(example_file_path '/dummy/app/assets/javascripts/car.js')
   end
 
   def example_file_path(filename)

@@ -12,9 +12,8 @@ gemspec
 
 rails_version = (ENV['RAILS_VERSION'] && ENV['RAILS_VERSION'].strip || '3')
 
-group :test, :development do
-  gem 'rails', if rails_version == '3' then '~> 3.2' else '~> 4.0' end
-  gem 'coffee-rails' if rails_version == '3'
-  gem 'sqlite3'
-  gem 'therubyracer'
-end 
+gem 'rails', if rails_version == '3' then '~> 3.2' else '~> 4.0' end
+gem 'coffee-rails'
+gem 'jquery-rails'
+gem 'sqlite3'
+gem 'therubyracer'

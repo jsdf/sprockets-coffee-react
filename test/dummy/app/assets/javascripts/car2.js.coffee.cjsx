@@ -1,13 +1,13 @@
-React = require('react')
 
 Car = React.createClass
   render: ->
-    <Car doors={4} safety={getSafetyRating()*2}  data-top-down="yep" checked>
-      <FrontSeat />
-      <BackSeat />
-      <p>Which seat can I take? {@props?.seat or 'none'}</p>
-    </Car>
+    <div doors={4} date={Date.now()*2}  data-top-down="yep" checked>
+      Car
+      <hr />
+      <hr />
+      <p>{@props?.color or 'none'}</p>
+    </div>
 
-React.renderComponent <Car seat="front, obvs" />,
-  document.getElementById 'container'
+$ ->
+  React.renderComponent <Car color="red" />, $('<div />').appendTo($('body')).get(0)
   
