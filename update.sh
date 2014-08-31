@@ -7,8 +7,6 @@ echo "updating to $VERSION"
 npm version $VERSION
 bundle install
 rake test
-# git add -A
-# git commit -m "updated ${DEPENDENCY} to v${VERSION}"
 read -p "will publish $VERSION. are you sure? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
