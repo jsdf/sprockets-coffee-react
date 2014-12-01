@@ -16,4 +16,4 @@ gem 'rails', if rails_version == '3' then '~> 3.2' else '~> 4.0' end
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'sqlite3'
-gem 'therubyracer'
+# gem 'therubyracer'
