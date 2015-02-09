@@ -10,10 +10,21 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-rails_version = (ENV['RAILS_VERSION'] && ENV['RAILS_VERSION'].strip || '3')
 
-gem 'rails', if rails_version == '3' then '~> 3.2' else '~> 4.0' end
+v = (ENV['RAILS_VERSION'] && ENV['RAILS_VERSION'].strip || '3')
+
+rails_version =
+  if v == '3'
+    '~> 3.2'
+  elsif v == 'v'
+    '~> 4.0'
+  else
+    v
+  end
+
+gem 'rails', rails_version
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'sqlite3'
 # gem 'therubyracer'

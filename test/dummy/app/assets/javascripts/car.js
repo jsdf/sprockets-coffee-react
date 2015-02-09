@@ -14,7 +14,7 @@
   });
 
   $(function() {
-    return React.renderComponent(React.createElement(Car, {
+    return React.render(React.createElement(Car, {
       "color": "red"
     }), $('<div />').appendTo($('body')).get(0));
   });

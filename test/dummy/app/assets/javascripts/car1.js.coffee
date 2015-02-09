@@ -10,5 +10,5 @@ Car = React.createClass
     </div>
 
 $ ->
-  React.renderComponent <Car color="red" />, $('<div />').appendTo($('body')).get(0)
+  React.render <Car color="red" />, $('<div />').appendTo($('body')).get(0)
   

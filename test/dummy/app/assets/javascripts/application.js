@@ -11,4 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require_tree .
+//= require react
+//= require react_ujs
+//= require components
+//= require car
+//= require car1
+//= require car2
+//= require car3
+//= require other
