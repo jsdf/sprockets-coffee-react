@@ -5,7 +5,7 @@ require 'coffee-react'
 module Sprockets
   # Preprocessor that runs CJSX source files through coffee-react-transform
   class CoffeeReact < Tilt::Template
-    CJSX_EXTENSION = /\.cjsx[^\/]*?$/
+    CJSX_EXTENSION = /\.(:?cjsx|coffee)[^\/]*?$/
     CJSX_PRAGMA = /^\s*#[ \t]*@cjsx/i
 
     def prepare

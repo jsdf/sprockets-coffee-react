@@ -1,4 +1,3 @@
-# @cjsx React.DOM
 
 Car = React.createClass
   render: ->
@@ -11,4 +10,3 @@ Car = React.createClass
 
 $ ->
   React.render <Car color="red" />, $('<div />').appendTo($('body')).get(0)
-  
