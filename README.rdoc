@@ -20,7 +20,27 @@ some CJSX code, require it from <tt>application.js</tt> or somewhere else:
 
   //= require my-component
 
+== How to use with a Rack application
 
+If you're not using rails, you'll need to register the Sprockets preprocessor manually. Here is an 
+adapted version of the Rack example provided by Sprockets, which additionally requires and registers 
+the sprockets-coffee-react engine:
+
+  require 'sprockets'
+  require 'sprockets/coffee-react'
+  map '/assets' do
+    environment = Sprockets::Environment.new
+    environment.append_path 'app/assets/javascripts'
+    environment.append_path 'app/assets/stylesheets'
+    environment.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
+    environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
+    environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
+    run environment
+  end
+
+  map '/' do
+    run YourRackApp
+  end
 
 == License
 
