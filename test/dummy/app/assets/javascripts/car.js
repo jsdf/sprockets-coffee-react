@@ -3,13 +3,13 @@
 
   Car = React.createClass({
     render: function() {
-      var _ref;
+      var ref;
       return React.createElement("div", {
         "doors": 4.,
         "date": Date.now() * 2,
         "data-top-down": "yep",
         "checked": true
-      }, "Car", React.createElement("hr", null), React.createElement("hr", null), React.createElement("p", null, ((_ref = this.props) != null ? _ref.color : void 0) || 'none'));
+      }, "Car", React.createElement("hr", null), React.createElement("hr", null), React.createElement("p", null, ((ref = this.props) != null ? ref.color : void 0) || 'none'));
     }
   });
 
