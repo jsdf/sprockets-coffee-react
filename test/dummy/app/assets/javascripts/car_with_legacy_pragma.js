@@ -1,4 +1,5 @@
 (function() {
+  /** @jsx React.DOM */;
   var Car;
 
   Car = React.createClass({
