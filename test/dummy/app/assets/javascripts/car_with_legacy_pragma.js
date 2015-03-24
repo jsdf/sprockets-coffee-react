@@ -1,4 +1,5 @@
 (function() {
+  /** @jsx React.DOM */;
   var Car;
 
   Car = React.createClass({
@@ -14,7 +15,7 @@
   });
 
   $(function() {
-    return React.render(React.createElement(Car, {
+    return React.renderComponent(React.createElement(Car, {
       "color": "red"
     }), $('<div />').appendTo($('body')).get(0));
   });
