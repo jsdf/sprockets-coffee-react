@@ -7,7 +7,7 @@ class SprocketsCoffeeReactTest < ActionDispatch::IntegrationTest
 
   test ".js.coffee with pragma" do
     get "/assets/car1.js"
-    assert_equal expected_output_file_with_legacy_pragma.read, @response.body.to_s
+    assert_equal expected_output_file.read, @response.body.to_s
     assert_response :success
   end
 
@@ -29,16 +29,19 @@ class SprocketsCoffeeReactTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  # for debugging
+  def print_assert_equal(expected, actual)
+    puts "expected ---\n#{expected}\n---"
+    puts "actual ---\n#{actual}\n---"
+    assert_equal expected, actual
+  end
+
   def example_dir
     File.dirname __FILE__
   end
 
   def expected_output_file
     File.open(example_file_path '/dummy/app/assets/javascripts/car.js')
-  end
-
-  def expected_output_file_with_legacy_pragma
-    File.open(example_file_path '/dummy/app/assets/javascripts/car_with_legacy_pragma.js')
   end
 
   def example_file_path(filename)
