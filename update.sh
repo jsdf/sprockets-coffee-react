@@ -16,4 +16,5 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   rake release
   git push origin master
+  git push origin --tags
 fi
