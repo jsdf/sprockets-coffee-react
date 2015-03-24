@@ -45,3 +45,17 @@ the sprockets-coffee-react engine:
 == License
 
 Released under the MIT License.  See the LICENSE file for further details.
+
+== How to use with Middleman
+
+Add the following to your config.rb file:
+
+  require 'sprockets/coffee-react'
+
+  ::Sprockets.register_preprocessor 'application/javascript', ::Sprockets::CoffeeReact
+  ::Sprockets.register_engine '.cjsx', ::Sprockets::CoffeeReactScript
+  ::Sprockets.register_engine '.js.cjsx', ::Sprockets::CoffeeReactScript
+  
+  
+
+
