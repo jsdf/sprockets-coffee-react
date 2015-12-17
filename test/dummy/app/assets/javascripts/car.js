@@ -1,7 +1,7 @@
 (function() {
   var Car;
 
-  Car = React.createClass({
+  Car = React.createClass({displayName: "Car",
     render: function() {
       var ref;
       return React.createElement("div", {

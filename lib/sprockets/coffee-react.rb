@@ -1,6 +1,7 @@
 require 'sprockets'
 require 'tilt'
 require 'coffee-react'
+require 'sprockets/coffee-react-postprocessor'
 
 module Sprockets
   # Preprocessor that runs CJSX source files through coffee-react-transform
@@ -21,6 +22,7 @@ module Sprockets
 
     def self.install(environment = ::Sprockets)
       environment.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
+      environment.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
       environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
       environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
     end

@@ -17,7 +17,7 @@ rails_version =
   if v == '3'
     '~> 3.2'
   elsif v == 'v'
-    '~> 4.0'
+    '~> 4.2'
   else
     v
   end
@@ -25,6 +25,7 @@ rails_version =
 gem 'rails', rails_version
 gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+gem 'react-rails', '~> 1.5.0', github: 'reactjs/react-rails'
 gem 'sqlite3'
 # gem 'therubyracer'
+gem 'sprockets', '~> 3'

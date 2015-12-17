@@ -1,5 +1,6 @@
 require 'sprockets'
 require 'sprockets/coffee-react'
+require 'sprockets/coffee-react-postprocessor'
 
 if defined?(Rails)
   module Sprockets
@@ -19,6 +20,7 @@ if defined?(Rails)
           
           # app.assets.register_preprocessor '.coffee', Sprockets::CoffeeReact
           app.assets.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
+          app.assets.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
           app.assets.register_engine '.cjsx', Sprockets::CoffeeReactScript
           app.assets.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
         end
