@@ -7,22 +7,18 @@ if defined?(Rails)
     class CoffeeReact
       class Engine < ::Rails::Engine
         initializer :setup_coffee_react, :after => "sprockets.environment", :group => :all do |app|
+          if app.assets
+            configure_env app.assets
+          else
+            app.config.assets.configure { |env| configure_env env }
+          end
+        end
 
-          # ::Sprockets::CoffeeReact.install(app.assets)
-
-          # unless app.assets.engines['.coffee']
-          #   if defined?(Sprockets::CoffeeScriptTemplate)
-          #     app.assets.register_engine '.coffee', Sprockets::CoffeeScriptTemplate
-          #     else
-          #     app.assets.register_engine '.coffee', Tilt::CoffeeScriptTemplate
-          #   end
-          # end
-          
-          # app.assets.register_preprocessor '.coffee', Sprockets::CoffeeReact
-          app.assets.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
-          app.assets.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
-          app.assets.register_engine '.cjsx', Sprockets::CoffeeReactScript
-          app.assets.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
+        def configure_env(env)
+          env.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
+          env.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
+          env.register_engine '.cjsx', Sprockets::CoffeeReactScript
+          env.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
         end
       end
     end
