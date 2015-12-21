@@ -10,21 +10,22 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
+sprockets_version = (ENV['SPROCKETS_VERSION'] && ENV['SPROCKETS_VERSION'].strip)
 
-v = (ENV['RAILS_VERSION'] && ENV['RAILS_VERSION'].strip || '3')
+if sprockets_version == '3'
+  gem 'rails', '~> 4.2'
+  gem 'sprockets', '~> 3.5'
+  gem 'sprockets-rails', '~> 3'
+elsif sprockets_version == '2'
+  gem 'rails', '~> 3.2'
+  gem 'sprockets', '~> 2'
+else
+  gem 'rails'
+  gem 'sprockets'
+end
 
-rails_version =
-  if v == '3'
-    '~> 3.2'
-  elsif v == 'v'
-    '~> 4.2'
-  else
-    v
-  end
-
-gem 'rails', rails_version
 gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'react-rails', '~> 1.5.0', github: 'reactjs/react-rails'
+gem 'react-rails'
 gem 'sqlite3'
 # gem 'therubyracer'
