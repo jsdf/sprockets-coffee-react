@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{lib}/**/*"] + ["LICENSE", "Rakefile", "README.rdoc"]
   #s.test_files = Dir["test/**/*"]
 
-  s.add_runtime_dependency 'coffee-react', ">= #{package["version"]}"
+  s.add_runtime_dependency 'coffee-react', ">= 3.4.0"
   s.add_runtime_dependency 'coffee-script'
   s.add_runtime_dependency 'tilt'
   s.add_runtime_dependency 'sprockets'
