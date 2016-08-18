@@ -23,5 +23,16 @@ module Sprockets
       end
     end
 
+    def self.call(input)
+      filename = input[:source_path] || input[:filename]
+      data = input[:data]
+      if filename.to_s =~ /\.coffee\.cjsx/
+        ::CoffeeReact.transform(data)
+      elsif filename.to_s =~ CJSX_EXTENSION
+        ::CoffeeScript.compile(::CoffeeReact.transform(data))
+      else
+        data
+      end
+    end
   end
 end
