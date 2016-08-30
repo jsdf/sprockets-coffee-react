@@ -9,7 +9,18 @@ module Sprockets
     end
 
     def evaluate(scope, locals, &block)
-      ::CoffeeReact.jstransform(data)
+      self.class.run(scope.pathname, data)
     end
+
+    def self.call(input)
+      filename  = input[:source_path] || input[:filename]
+      source    = input[:data]
+      run(filename, source)
+    end
+
+    def self.run(filename, source)
+      ::CoffeeReact.jstransform(source)
+    end
+
   end
 end
