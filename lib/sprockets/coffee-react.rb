@@ -31,10 +31,15 @@ module Sprockets
     end
 
     def self.install(environment = ::Sprockets)
+      if environment.respond_to?(:register_transformer)
+        environment.register_mime_type 'application/javascript', extensions: ['.cjsx'], charset: :javascript
+        environment.register_mime_type 'application/javascript', extensions: ['.js.cjsx'], charset: :javascript
+      else
+        environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
+        environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
+      end
       environment.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
       environment.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
-      environment.register_pipeline '.cjsx', Sprockets::CoffeeReactScript
-      environment.register_pipeline '.js.cjsx', Sprockets::CoffeeReactScript
     end
   end
 end

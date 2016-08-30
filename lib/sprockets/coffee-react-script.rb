@@ -14,10 +14,20 @@ module Sprockets
     end
 
     def evaluate(scope, locals, &block)
-      if scope.pathname.to_s =~ /\.coffee\.cjsx/
-        ::CoffeeReact.transform(data)
-      elsif scope.pathname.to_s =~ CJSX_EXTENSION || data =~ CJSX_PRAGMA
-        ::CoffeeScript.compile(::CoffeeReact.transform(data))
+      self.class.run(scope.pathname, data)
+    end
+
+    def self.call(input)
+      filename  = input[:source_path] || input[:filename]
+      source    = input[:data]
+      run(filename, source)
+    end
+
+    def self.run(filename, source)
+      if filename.to_s =~ /\.coffee\.cjsx/
+        ::CoffeeReact.transform(source)
+      elsif filename.to_s =~ CJSX_EXTENSION || source =~ CJSX_PRAGMA
+        ::CoffeeScript.compile(::CoffeeReact.transform(source))
       else
         data
       end
