@@ -9,7 +9,7 @@ module Sprockets
     end
 
     def evaluate(scope, locals, &block)
-      self.class.run(scope.pathname, data)
+      self.class.run(scope.pathname.to_s, data)
     end
 
     def self.call(input)

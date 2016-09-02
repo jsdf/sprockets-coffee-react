@@ -13,7 +13,7 @@ module Sprockets
     end
 
     def evaluate(scope, locals, &block)
-      self.class.run(scope.pathname, data)
+      self.class.run(scope.pathname.to_s, data)
     end
 
     def self.call(input)
@@ -23,7 +23,7 @@ module Sprockets
     end
 
     def self.run(filename, source)
-      if filename.to_s =~ CJSX_EXTENSION || source =~ CJSX_PRAGMA
+      if filename =~ CJSX_EXTENSION || source =~ CJSX_PRAGMA
         ::CoffeeReact.transform(source)
       else
         source
@@ -31,15 +31,7 @@ module Sprockets
     end
 
     def self.install(environment = ::Sprockets)
-      if environment.respond_to?(:register_transformer)
-        environment.register_mime_type 'application/javascript', extensions: ['.cjsx'], charset: :javascript
-        environment.register_mime_type 'application/javascript', extensions: ['.js.cjsx'], charset: :javascript
-      else
-        environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
-        environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
-      end
-      environment.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
-      environment.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
+      Sprockets::CoffeeReact::Engine.install(environment)
     end
   end
 end
