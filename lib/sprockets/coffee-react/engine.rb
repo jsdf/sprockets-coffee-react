@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'sprockets'
 require 'sprockets/coffee-react'
 require 'sprockets/coffee-react-postprocessor'
