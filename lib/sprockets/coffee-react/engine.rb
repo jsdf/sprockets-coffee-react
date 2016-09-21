@@ -8,17 +8,22 @@ if defined?(Rails)
       class Engine < ::Rails::Engine
         initializer :setup_coffee_react, :after => "sprockets.environment", :group => :all do |app|
           if app.assets
-            configure_env app.assets
+            self.class.install app.assets
           else
-            app.config.assets.configure { |env| configure_env env }
+            app.config.assets.configure { |env| self.class.install env }
           end
         end
 
-        def configure_env(env)
-          env.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
-          env.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
-          env.register_engine '.cjsx', Sprockets::CoffeeReactScript
-          env.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
+        def self.install(environment)
+          if environment.respond_to?(:register_transformer)
+            environment.register_mime_type 'text/cjsx', extensions: ['.cjsx', '.js.cjsx', '.js.coffee.cjsx'], charset: :unicode
+            environment.register_transformer 'text/cjsx', 'application/javascript', Sprockets::CoffeeReactScript
+          else
+            environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
+            environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
+          end
+          environment.register_preprocessor 'application/javascript', Sprockets::CoffeeReact
+          environment.register_postprocessor 'application/javascript', Sprockets::CoffeeReactPostprocessor
         end
       end
     end

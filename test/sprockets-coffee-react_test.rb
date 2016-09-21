@@ -23,6 +23,12 @@ class SprocketsCoffeeReactTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test ".js.cjsx with unicode" do
+    get "/assets/car4.js"
+    assert_equal expected_output_file.read, @response.body.to_s
+    assert_response :success
+  end
+
   test ".js" do
     get "/assets/car.js"
     assert_equal expected_output_file.read, @response.body.to_s

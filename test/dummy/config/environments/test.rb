@@ -9,7 +9,7 @@ Dummy::Application.configure do
 
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=3600"
+  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=3600' }
 
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
@@ -38,4 +38,6 @@ Dummy::Application.configure do
   config.cache_store = :null_store
   config.assets.cache_store = :null_store
   config.eager_load = false
+
+  config.secret_key_base = SecureRandom.hex(64)
 end
