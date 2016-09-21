@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'sprockets'
 require 'sprockets/coffee-react'
 require 'sprockets/coffee-react-postprocessor'
@@ -17,8 +16,8 @@ if defined?(Rails)
 
         def self.install(environment)
           if environment.respond_to?(:register_transformer)
-            environment.register_mime_type 'application/javascript', extensions: ['.cjsx'], charset: :javascript
-            environment.register_mime_type 'application/javascript', extensions: ['.js.cjsx'], charset: :javascript
+            environment.register_mime_type 'text/jsx', extensions: ['.cjsx'], charset: :unicode
+            environment.register_mime_type 'text/jsx', extensions: ['.js.cjsx'], charset: :unicode
           else
             environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
             environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
