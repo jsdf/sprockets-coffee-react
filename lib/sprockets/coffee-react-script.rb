@@ -7,6 +7,7 @@ module Sprockets
   # Preprocessor that runs CJSX source files through coffee-react-transform
   # then compiles with coffee-script
   class CoffeeReactScript < Tilt::Template
+    COFFEE_CJSX_EXTENSION = /\.coffee\.cjsx/
     CJSX_EXTENSION = /\.cjsx[^\/]*?$/
     CJSX_PRAGMA = /^\s*#[ \t]*@cjsx/i
 
@@ -24,12 +25,12 @@ module Sprockets
     end
 
     def self.run(filename, source)
-      if filename =~ /\.coffee\.cjsx/
+      if filename =~ COFFEE_CJSX_EXTENSION
         ::CoffeeReact.transform(source)
       elsif filename =~ CJSX_EXTENSION || source =~ CJSX_PRAGMA
         ::CoffeeScript.compile(::CoffeeReact.transform(source))
       else
-        data
+        source
       end
     end
 
