@@ -8,7 +8,7 @@ if defined?(Rails)
       class Engine < ::Rails::Engine
         initializer :setup_coffee_react, :after => "sprockets.environment", :group => :all do |app|
           if app.assets
-            configure_env app.assets
+            self.class.install app.assets
           else
             app.config.assets.configure { |env| self.class.install env }
           end
