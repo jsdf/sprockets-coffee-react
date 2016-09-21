@@ -16,8 +16,8 @@ if defined?(Rails)
 
         def self.install(environment)
           if environment.respond_to?(:register_transformer)
-            environment.register_mime_type 'text/jsx', extensions: ['.cjsx'], charset: :unicode
-            environment.register_mime_type 'text/jsx', extensions: ['.js.cjsx'], charset: :unicode
+            environment.register_mime_type 'text/cjsx', extensions: ['.cjsx', '.js.cjsx', '.js.coffee.cjsx'], charset: :unicode
+            environment.register_transformer 'text/cjsx', 'application/javascript', Sprockets::CoffeeReactScript
           else
             environment.register_engine '.cjsx', Sprockets::CoffeeReactScript
             environment.register_engine '.js.cjsx', Sprockets::CoffeeReactScript
