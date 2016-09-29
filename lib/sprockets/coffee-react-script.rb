@@ -24,11 +24,11 @@ module Sprockets
     end
 
     def self.call(input)
-      filename = input[:source_path] || input[:filename]
+      filename = (input[:source_path] || input[:filename]).to_s
       data = input[:data]
-      if filename.to_s =~ /\.coffee\.cjsx/
+      if filename =~ /\.coffee(\.source-.*)?\.cjsx/
         ::CoffeeReact.transform(data)
-      elsif filename.to_s =~ CJSX_EXTENSION
+      elsif filename =~ CJSX_EXTENSION
         ::CoffeeScript.compile(::CoffeeReact.transform(data))
       else
         data
